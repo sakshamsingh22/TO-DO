@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusList — To-Do</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>FocusList</h1>
+        <p>Plan. Do. Done.</p>
+      </div>
+    </div>
+    <div class="mode-toggle">
+      <button id="themeToggle" class="ghost" aria-label="Toggle dark mode">
+        <span class="sun">Light</span>
+        <span class="moon">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <form id="taskForm" class="task-input" autocomplete="off">
+        <label class="sr-only" for="taskInput">Add a new task</label>
+        <input id="taskInput" name="task" type="text" placeholder="What do you want to get done?" maxlength="120" />
+        <button type="submit" class="primary">Add Task</button>
+      </form>
+      <p id="inputError" class="error" role="alert" aria-live="polite"></p>
+
+      <div class="toolbar">
+        <div class="filters" role="tablist" aria-label="Task filters">
+          <button type="button" class="chip active" data-filter="all" role="tab">All</button>
+          <button type="button" class="chip" data-filter="active" role="tab">Active</button>
+          <button type="button" class="chip" data-filter="completed" role="tab">Completed</button>
+        </div>
+        <button id="clearCompleted" class="ghost">Clear Completed</button>
+      </div>
+
+      <ul id="taskList" class="task-list" aria-live="polite"></ul>
+
+      <div class="summary">
+        <div>Total: <span id="totalCount">0</span></div>
+        <div>Pending: <span id="pendingCount">0</span></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="confirmModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+    <div class="modal-content">
+      <h2 id="confirmTitle">Delete task?</h2>
+      <p id="confirmText">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="confirmCancel" class="ghost">Cancel</button>
+        <button id="confirmDelete" class="danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
